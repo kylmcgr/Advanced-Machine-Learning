@@ -1,3 +1,5 @@
+# this is my old thing from last semester
+
 import gym
 import time
 from random import randint
@@ -20,7 +22,7 @@ for k in range(10000):
     if i<9900:
         a[rand] = a[rand] + r2
     if k % 1000 == 0:
-        print k
+        print (k)
     for t in range(1000):
         # print observation
         action1 = a[0]*observation[0] + a[1]*observation[1] + a[2]*observation[2] + a[3]*observation[3]
@@ -45,13 +47,13 @@ for k in range(10000):
                 last100ave /= 100
                 if last100ave>475:
                     for i in range(100):
-                        print ave[-(i+1)]
+                        print (ave[-(i+1)])
                     p = False
-                    print k
+                    print (k)
                 if last100ave>bestLast100:
                     bestLast100 = last100ave
             break
-print bestLast100
+print (bestLast100)
 observation = env.reset()
 totalScore = 0
 for t in range(1000):
@@ -67,4 +69,4 @@ for t in range(1000):
     totalScore += reward
     if done:
         break
-print totalScore, b
+print (totalScore, b)

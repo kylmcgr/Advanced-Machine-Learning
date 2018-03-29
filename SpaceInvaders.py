@@ -1,3 +1,5 @@
+# this is my old thing from last semester, I copied the weights after training so I wouldn't have to train each time
+
 import gym
 import time
 from random import randint

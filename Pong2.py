@@ -20,15 +20,17 @@ def run_episode(environment, weights):
 	return total_reward
 
 best_weights = None
-best_reward = 0
+best_reward = -20
 
 # Let's search through 300 different random weights
 for step in range(300):
-    weights = np.random.rand(128) * 2 - 1
-    reward = run_episode(environment, weights)
-    if reward > best_reward:
-       best_reward = reward
-       best_weights = weights
+	weights = np.random.rand(128) * 2 - 1
+	reward = run_episode(environment, weights)
+	if reward > best_reward:
+		best_reward = reward
+		best_weights = weights
+		print(reward)
+	print(step)
 
 observation = environment.reset()
 cumulative_reward = 0

@@ -3,24 +3,24 @@ import numpy as np
 
 environment = gym.make('MountainCar-v0')
 
-def determine_action(observation, weights ):
-	weighted_sum = np.dot(observation, weights)
-	action = 0 if weighted_sum < 0 else 2
-	return action
+def determine_action(observation, weights):
+    weighted_sum = np.dot(observation, weights)
+    action = 0 if weighted_sum < 0 else 2
+    return action
 
 def run_episode(environment, weights):
-	observation = environment.reset()
-	total_reward = 0
-	for step in range(200):
-		action = determine_action(observation, weights)
-		observation, reward, done, info = environment.step(action)
-		total_reward += reward
-		if done:
-			break
-	return total_reward
+    observation = environment.reset()
+    total_reward = 0
+    for step in range(200):
+        action = determine_action(observation, weights)
+        observation, reward, done, info = environment.step(action)
+        total_reward += reward
+        if done:
+            break
+    return total_reward
 
 best_weights = None
-best_reward = 0
+best_reward = -200
 
 # Let's search through 300 different random weights
 for step in range(300):
