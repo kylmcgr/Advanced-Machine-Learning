@@ -48,6 +48,7 @@ def show():
         else:
             action = 3
         observation, reward, done, info = env.step(action)
+        time.sleep(0.01)
         if done:
             break
 def train():
@@ -88,7 +89,7 @@ def train():
                             b[x] = a[x]
                 break
     return bestReward
-# print train()
+print (train())
 # print b100(b)
 # print b
-show()
+# show()

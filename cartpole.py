@@ -6,6 +6,7 @@ from random import randint
 from random import random
 env = gym.make('MountainCar-v0')
 b = [1.810671322762644, 0.43274226815281325, 3.2998817305126655, 0.836420592861991, 1.7865698513342276, 2.539112519087211]
+# b = [0,0,0,0,0,0]
 ave = []
 bestReward = -10
 bestLast100 = -100000
