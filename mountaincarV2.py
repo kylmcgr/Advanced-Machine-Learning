@@ -1,5 +1,5 @@
 import gym
-from EvolutionaryNeuralNet import Evolution
+from EvolutionaryNeuralNet import Evolution, Genome
 env = gym.make('MountainCar-v0')
 # env = gym.make('FrozenLake-v0')
 evo = Evolution(2,[6],3)
@@ -57,5 +57,47 @@ def show():
             score = 1000-score
             break
     print (score)
+
+def validate():
+    trained_rewards = []
+    trained_genome = evo.genomes[0]
+    for i in range(1000):
+        observation = env.reset()
+        score = 0
+        for t in range(1000):
+            # env.render()
+            actions = trained_genome.network.compute(observation)
+            action = 0
+            if actions[0]>actions[1]:
+                action = 0
+            else:
+                action = 1
+            observation, reward, done, info = env.step(action)
+            score += reward
+            if done:
+                break
+        trained_rewards.append(score)
+    print(sum(trained_rewards)/1000)
+    untrained_rewards = []
+    untrained_genome = Genome(4,[6],2)
+    for i in range(1000):
+        observation = env.reset()
+        score = 0
+        for t in range(1000):
+            # env.render()
+            actions = untrained_genome.network.compute(observation)
+            action = 0
+            if actions[0]>actions[1]:
+                action = 0
+            else:
+                action = 1
+            observation, reward, done, info = env.step(action)
+            score += reward
+            if done:
+                break
+        untrained_rewards.append(score)
+    print(sum(untrained_rewards)/1000)
+
 train()
-show()
+# show()
+validate()
